@@ -17,15 +17,15 @@ class MinStack {
 
     public MinStack() {
         this.linkList = new ListNode();
-        this.size = 0;
     }
 
     public void push(int x) {
-        if(size == 0) {
+        if(this.size == 0) {
             linkList.val = x;
-            size++;
+            this.size++;
             min = x;
         }
+        //TODO: this approach only stores 2 elements at a time...needs refactoring!
         else{
             linkList.previous = linkList;
             linkList = linkList.next;
@@ -37,22 +37,21 @@ class MinStack {
             }
         }
     }
-
-    public int getSize(){
-        return this.size;
-    }
-
-    //TODO: need to account for a newMin assuming it gets popped
+    //TODO: need mechanism to recompute newMin assuming it gets popped
     public void pop() {
         /**
-        linklist is pointed to the top of the stack... so pointing it to previous is disconnecting
-        its reference to its top where GC will remove it eventually
+         linklist is pointed to the top of the stack... so pointing it to previous is disconnecting
+         its reference to its top where GC will remove it eventually
          **/
         linkList = linkList.previous;
         this.size--;
         if(size >= 0)
             //pointing back one so pop can be called 'size' times
             linkList.previous = linkList.previous.previous;
+    }
+
+    public int getSize(){
+        return this.size;
     }
 
     public int top() {
@@ -64,7 +63,7 @@ class MinStack {
     }
 
     public static void main(String[] args) {
-
+        MinStack stack = new MinStack();
     }
 }
 
