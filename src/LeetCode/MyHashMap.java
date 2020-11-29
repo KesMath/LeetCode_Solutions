@@ -1,4 +1,5 @@
 package LeetCode;
+import java.util.Arrays;
 
 class MyHashMap {
 
@@ -8,9 +9,7 @@ class MyHashMap {
         this.arr = new int[1000000];
 
         //need to set all values to -1 since key and values will be >=0
-        for(int i = 0; i < this.arr.length; i++){
-            this.arr[i] = -1;
-        }
+        Arrays.fill(this.arr, -1);
     }
 
     /** value will always be non-negative. */
