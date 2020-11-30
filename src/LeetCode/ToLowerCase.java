@@ -45,8 +45,23 @@ public class ToLowerCase {
         return builder.toString();
     }
 
+    public static String toLowerCase2(String str) {
+        StringBuilder s = new StringBuilder();
+        char[] arr = str.toCharArray();
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] >=65 && arr[i] <=90){
+                s.append(Character.toChars(arr[i]+32));
+            }
+            else{
+                s.append(arr[i]);
+            }
+        }
+        return s.toString();
+    }
+
+
     public static void main(String[] args) {
-        System.out.println(ToLowerCase.toLowerCase("LOVELY"));
+        System.out.println(ToLowerCase.toLowerCase2("LOVELY"));
         System.out.println(ToLowerCase.toLowerCase("Hello"));
         System.out.println(ToLowerCase.toLowerCase("here"));
     }
