@@ -1,50 +1,44 @@
 package LeetCode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class IslandPerimeter {
+
     public static int islandPerimeter(int[][] grid) {
         int area = 0;
-
+        HashMap<ArrayList<Integer>, Integer> landMap = new HashMap<>();
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[i].length; j++){
-                //TOP ROW
-                if(i == 0){ //restricted from checking up
-                    if(j == 0){
-                        // restricted from checking left
-                    }
-                    else if(j == grid[i].length-1){
-                        // restricted from checking right
-                    }
-                    else{
-                        // check down, left, and right
-                    }
+                if(grid[i][j] == 1){
+                    landMap.put(new ArrayList<>(Arrays.asList(i, j)), -1);
                 }
-                //BOTTOM ROW
-                else if (i == grid.length - 1){ // restricted from checking down
-                    if(j == 0){
-                        // restricted from checking left
-                    }
-                    else if(j == grid[i].length-1){
-                        // restricted from checking right
-                    }
-                    else{
-                        // check up, left and right
-                    }
-                }
-                //LEFT COLUMN
-                else if(j == 0){ // restricted from checking left
+            }
+        }
+        for (Map.Entry<ArrayList<Integer>, Integer> entry : landMap.entrySet()){
+            /**per entry, this checks if there exists a set of corresponding
+             ArrayList containing L/R/U/D coordinates with map
+             **/
+            area+=4;
+            if(landMap.containsKey(new ArrayList<>(Arrays.asList(entry.getKey().get(0),
+                    entry.getKey().get(1)-1)))){ //check left
+                area--;
+            }
+            if(landMap.containsKey(new ArrayList<>(Arrays.asList(entry.getKey().get(0),
+                    entry.getKey().get(1)+1)))){ //check right
+                area--;
+            }
 
-                }
+            if(landMap.containsKey(new ArrayList<>(Arrays.asList(entry.getKey().get(0)-1,
+                    entry.getKey().get(1))))){ //check up
+                area--;
+            }
 
-                //RIGHT COLUMN
-                else if (j == grid[i].length - 1){ // restricted from checking right
-
-                }
-
-                //ANY CELL OTHERWISE
-                else{
-                    //can perform left, right, up, down scan without index OOB exception!
-
-                }
+            if(landMap.containsKey(new ArrayList<>(Arrays.asList(entry.getKey().get(0)+1,
+                    entry.getKey().get(1))))){ //check down
+                area--;
             }
         }
         return area;
@@ -99,8 +93,9 @@ public class IslandPerimeter {
         int [][] island3 = {{1,0}};
 
 
-        System.out.println(IslandPerimeter.islandPerimeter2(island1));
-        //System.out.println(IslandPerimeter.islandPerimeter(island2));
-        //System.out.println(IslandPerimeter.islandPerimeter(island3));
+        System.out.println(IslandPerimeter.islandPerimeter(island1));
+        System.out.println(IslandPerimeter.islandPerimeter(island2));
+        System.out.println(IslandPerimeter.islandPerimeter(island3));
+        }
     }
-}
+
