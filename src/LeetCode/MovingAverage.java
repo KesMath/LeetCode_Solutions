@@ -11,33 +11,29 @@ public class MovingAverage {
     private int circularPointer = 0; //this pointer simulates the leftmost entry in the sliding window that will be ejected
     private int window;
     private int arrSize;
+    private double sum = 0.0;
 
     public MovingAverage(int size) {
         this.avgArr = new int[size];
         this.window = size;
     }
 
-    public double getAvg(int[] arr){
-        double sum = 0.0;
-        for(int i = 0; i < arr.length; i++){
-            sum+=arr[i];
-        }
-        return sum/this.arrSize;
-    }
-
     public double next(int val) {
         if(this.arrSize == this.window) {
+            sum-= this.avgArr[circularPointer];
             this.avgArr[circularPointer] = val;
             circularPointer++;
+            sum+=val;
             if(circularPointer == this.window){
                 circularPointer = 0;
             }
         }
         else{
             this.avgArr[this.arrSize] = val;
+            sum+=val;
             arrSize++;
         }
-        return this.getAvg(this.avgArr);
+        return sum/this.arrSize;
     }
 
     public static void main(String[] args) {
