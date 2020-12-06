@@ -1,10 +1,14 @@
 package LeetCode;
 
-import java.util.Arrays;
-
 public class MovingAverage {
+    /**instead of using a Collections import where one can retrieve the last n items,
+     * this approach is more memory efficient by updating the values within an array.
+     * We can simulate a sliding window effect that the
+     * leftmost item in a list will always be disregarded or ejected by keeping track of a
+     * circular pointer that handles this rotation.
+     **/
     private int[] avgArr;
-    private int windowPointer = 0; //this pointer simulates the leftmost entry in the sliding window that will be ejected
+    private int circularPointer = 0; //this pointer simulates the leftmost entry in the sliding window that will be ejected
     private int window;
     private int arrSize;
 
@@ -23,13 +27,10 @@ public class MovingAverage {
 
     public double next(int val) {
         if(this.arrSize == this.window) {
-            //System.out.println("pointer: "+ windowPointer);
-            this.avgArr[windowPointer] = val;
-            windowPointer++;
-            //System.out.println("pointer: "+ windowPointer);
-            //System.out.println(Arrays.toString(this.avgArr));
-            if(windowPointer == this.window){
-                windowPointer = 0;
+            this.avgArr[circularPointer] = val;
+            circularPointer++;
+            if(circularPointer == this.window){
+                circularPointer = 0;
             }
         }
         else{
