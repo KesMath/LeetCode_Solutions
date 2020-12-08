@@ -40,12 +40,5 @@ public class GoalParserInterpretation {
     public static void main(String[] args) {
         GoalParserInterpretation g = new GoalParserInterpretation();
         System.out.println(g.interpret("(al)G(al)()()G"));
-//        Stack<Integer> s = new Stack<>();
-//        s.add(1);
-//        s.add(2);
-//        s.add(3);
-//        s.add(4);
-//        s.add(5);
-//        System.out.println(s.search(4));
     }
 }
