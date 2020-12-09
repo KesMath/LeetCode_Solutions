@@ -30,5 +30,6 @@ public class LargestUniqueNumber {
 
     public static void main(String[] args) {
         System.out.println(LargestUniqueNumber.largestUniqueNumber(new int[]{9,9,8,8}));
+        System.out.println(LargestUniqueNumber.largestUniqueNumber(new int[]{5,7,3,9,4,9,8,3,1}));
     }
 }
