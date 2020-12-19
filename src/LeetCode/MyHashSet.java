@@ -1,28 +1,22 @@
 package LeetCode;
 
-import java.util.LinkedList;
-
 public class MyHashSet {
-    private LinkedList<Integer> linkedList;
+    private boolean[] set;
 
     public MyHashSet() {
-        this.linkedList = new LinkedList<>();
+        this.set = new boolean[1000000];
     }
 
     public void add(int key) {
-        if(this.contains(key) == false){
-            this.linkedList.add(key);
-        }
+        this.set[key] = true;
     }
 
     public void remove(int key) {
-        if(this.contains(key) == true){
-            this.linkedList.removeFirstOccurrence(key);
-        }
+        this.set[key] = false;
     }
 
     public boolean contains(int key) {
-        return this.linkedList.contains(key);
+        return this.set[key];
     }
 
     public static void main(String[] args) {
