@@ -1,8 +1,5 @@
 package LeetCode;
 
-
-import java.util.Arrays;
-
 public class ArrayStringsAreEqual {
     public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
         StringBuilder str1 = new StringBuilder();
