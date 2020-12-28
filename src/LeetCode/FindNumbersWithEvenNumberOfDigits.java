@@ -11,6 +11,16 @@ public class FindNumbersWithEvenNumberOfDigits {
         return counter;
     }
 
+    public int findNumbers1(int[] nums) {
+        int cout = 0;
+        for(int num : nums){
+            if(Integer.toString(num).length() % 2 == 0)
+                cout++;
+        }
+        return cout;
+
+    }
+
     public static void main(String[] args) {
         int [] nums = {555,901,482,1771};
         System.out.println(FindNumbersWithEvenNumberOfDigits.findNumbers(nums));
