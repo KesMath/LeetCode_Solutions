@@ -1,6 +1,8 @@
 package LeetCode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class LargestUniqueNumber {
@@ -44,11 +46,36 @@ public class LargestUniqueNumber {
         return largestUniqueNum;
     }
 
+
+    public static int largestUniqueNumber2(int[] A) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int largestUniqueNum = -1;
+
+        for(int i = 0; i < A.length; i++){
+            if(map.containsKey(A[i])){
+                map.put(A[i], map.get(A[i])+1);
+            }
+            else{
+                map.put(A[i],1);
+            }
+        }
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            if(entry.getValue() == 1){
+                if(entry.getKey() > largestUniqueNum)
+                    largestUniqueNum = entry.getKey();
+            }
+        }
+        return largestUniqueNum;
+    }
+
     public static void main(String[] args) {
         System.out.println(LargestUniqueNumber.largestUniqueNumber(new int[]{9,9,8,8}));
         System.out.println(LargestUniqueNumber.largestUniqueNumber(new int[]{5,7,3,9,4,9,8,3,1}));
         System.out.println("========================================");
         System.out.println(LargestUniqueNumber.largestUniqueNumber1(new int[]{9,9,8,8}));
         System.out.println(LargestUniqueNumber.largestUniqueNumber1(new int[]{5,7,3,9,4,9,8,3,1}));
+        System.out.println("========================================");
+        System.out.println(LargestUniqueNumber.largestUniqueNumber2(new int[]{9,9,8,8}));
+        System.out.println(LargestUniqueNumber.largestUniqueNumber2(new int[]{5,7,3,9,4,9,8,3,1}));
     }
 }
