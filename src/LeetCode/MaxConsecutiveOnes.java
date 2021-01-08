@@ -1,5 +1,6 @@
 package LeetCode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,6 @@ public class MaxConsecutiveOnes {
         }
         //when end of array is reached!
         map.put(key,freq);
-        key++;
         for(Map.Entry<Integer,Integer> entry: map.entrySet()){
             if(entry.getValue() > max){
                 max = entry.getValue();
@@ -32,8 +32,7 @@ public class MaxConsecutiveOnes {
 
     //OPTIMAL THAN ONE ABOVE!
     public static int findMaxConsecutiveOnes1(int[] nums) {
-        int max = 0, freq = 0, key = 0;
-
+        int freq = 0, key = 0;
         /**number of zeros or breaks in the list will equate
          * to how many key/value pairs needed for arr size
          * thus no need to instantiate array to contraint size!
@@ -57,13 +56,8 @@ public class MaxConsecutiveOnes {
         }
         //when end of array is reached!
         map[key]=freq;
-        key++;
-        for(int e: map){
-            if(e > max){
-                max = e;
-            }
-        }
-        return max;
+        Arrays.sort(map);
+        return map[mapSize];
     }
 
     //TODO: fix bug! This implementation should yield the most efficient implementation!
