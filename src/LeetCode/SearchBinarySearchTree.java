@@ -15,6 +15,12 @@ public class SearchBinarySearchTree {
          }
      }
     public TreeNode searchBST(TreeNode root, int val) {
+         /**NOTE: multiple return statements needed to
+          * resolve frame stacks and output proper TreeNode object!
+          * This was an approach done on intuition without looking
+          * at optimal/"textbook approaches" and as such,
+          * is NOT production grade quality!!!
+          */
          if(root.val == val){
              return root;
          }
