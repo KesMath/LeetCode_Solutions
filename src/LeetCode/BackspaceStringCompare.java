@@ -17,9 +17,7 @@ public class BackspaceStringCompare {
     }
 
     public boolean backspaceCompare(String S, String T) {
-        Stack<Character> stackofS = loadStack(S);
-        Stack<Character> stackofT = loadStack(T);
-        return stackofS.toString().equals(stackofT.toString());
+        return loadStack(S).toString().equals(loadStack(T).toString());
     }
 
     public static void main(String[] args) {
