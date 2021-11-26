@@ -1,6 +1,4 @@
 package LeetCode;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * DESCRIPTION: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
@@ -13,25 +11,23 @@ import java.util.Map;
  * iterate though one hashmap, and if that key/index exists in the other hashmap,
  * perform dot product. The key of HASH1 NOT existing in HASH2 implies that a zero was in that position
  * thus we are avoiding wasted computation (due to Zero Property of Multiplication where 0*a = 0)
+ *
+ * NOTE: hashmap soln as described above is NOT implemented below but is still a sound approach.
+ * This array implementation is more efficient
  */
 public class SparseVector {
 
-    private HashMap<Integer, Integer> nonZeroVector;
+    private int[] arr;
 
     public SparseVector(int[] nums) {
-        this.nonZeroVector = new HashMap<>();
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] != 0){
-                this.nonZeroVector.put(i, nums[i]);
-            }
-        }
+        this.arr = nums;
     }
 
     public int dotProduct(SparseVector vec) {
         int dotProduct = 0;
-        for(Map.Entry<Integer,Integer> entry: vec.nonZeroVector.entrySet()){
-            if(this.nonZeroVector.containsKey(entry.getKey())){
-                dotProduct+= this.nonZeroVector.get(entry.getKey()) * entry.getValue();
+        for(int i = 0; i < vec.arr.length; i++){
+            if(vec.arr[i] != 0 && this.arr[i] != 0){
+                dotProduct+= vec.arr[i] * this.arr[i];
             }
         }
         return dotProduct;
