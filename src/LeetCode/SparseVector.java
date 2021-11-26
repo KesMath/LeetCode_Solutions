@@ -40,6 +40,10 @@ public class SparseVector {
     public static void main(String[] args) {
         SparseVector v1 = new SparseVector(new int[] {1,0,0,2,3});
         SparseVector v2 = new SparseVector(new int[] {0,3,0,4,0});
-        System.out.println(v1.dotProduct(v2));
+        System.out.println(v1.dotProduct(v2)); //Returns: 8
+
+        SparseVector v3 = new SparseVector(new int[] {0,1,0,0,2,0,0});
+        SparseVector v4 = new SparseVector(new int[] {1,0,0,0,3,0,4});
+        System.out.println(v3.dotProduct(v4)); //Returns: 6
     }
 }
