@@ -2,6 +2,7 @@ package LeetCode;
 import java.util.HashMap;
 
 /**
+ * DESCRIPTION: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
  * Given the definition of a sparse vector (which mostly contains zero values)
  * one can rely on a hashmap where key = index of non-zero integer & value = nums[i]
  * Simply put it, the hashmap would only store indices and values of non-zero terms which are the only crucial
