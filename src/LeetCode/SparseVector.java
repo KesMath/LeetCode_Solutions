@@ -1,5 +1,6 @@
 package LeetCode;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * DESCRIPTION: https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
@@ -27,7 +28,13 @@ public class SparseVector {
     }
 
     public int dotProduct(SparseVector vec) {
-
+        int dotProduct = 0;
+        for(Map.Entry<Integer,Integer> entry: vec.nonZeroVector.entrySet()){
+            if(this.nonZeroVector.containsKey(entry.getKey())){
+                dotProduct+= this.nonZeroVector.get(entry.getKey()) * entry.getValue();
+            }
+        }
+        return dotProduct;
     }
 
     public static void main(String[] args) {
