@@ -1,8 +1,18 @@
 package LeetCode;
+import java.util.Comparator;
 import java.util.TreeMap;
 
 //DESCRIPTION: https://leetcode.com/problems/top-k-frequent-elements/
 public class TopKFrequent {
+
+    public class ValueComparator implements Comparator<TreeMap>{
+
+        @Override
+        //for comparison to work, function needs the proper key compare values
+        public int compare(TreeMap firstTreeMap, TreeMap secondTreeMap) {
+            //return Integer.compare(firstTreeMap.get(), secondTreeMap.get());
+        }
+    }
 
     public static int[] topKFrequent(int[] nums, int k) {
         TreeMap<Integer, Integer> map = new TreeMap<>();
