@@ -27,6 +27,7 @@ public class TopKFrequent {
         }
         // with this approach, we now have 1:3, 2:2, 3,1 but we need to sort the values in descending order
         // then we will be able to return those k frequent items
+        return nums;
     }
 
     public static void main(String[] args) {
