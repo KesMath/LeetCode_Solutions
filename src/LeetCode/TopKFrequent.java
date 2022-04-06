@@ -11,6 +11,7 @@ public class TopKFrequent {
         //for comparison to work, function needs the proper key compare values
         public int compare(TreeMap firstTreeMap, TreeMap secondTreeMap) {
             //return Integer.compare(firstTreeMap.get(), secondTreeMap.get());
+            return 0;
         }
     }
 
@@ -30,6 +31,7 @@ public class TopKFrequent {
 
     public static void main(String[] args) {
         System.out.println(TopKFrequent.topKFrequent(new int[] {1,1,1,2,2,3}, 2));
+        System.out.println(TopKFrequent.topKFrequent(new int[] {4,4,4,4,3,3,3,3}, 2));
         System.out.println(TopKFrequent.topKFrequent(new int[] {1}, 1));
     }
 }
